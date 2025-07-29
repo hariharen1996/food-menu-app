@@ -1,0 +1,15 @@
+{% extends 'food/base.html' %}
+{% load crispy_forms_tags %}
+
+
+{% block body %}
+<div class="container mt-5">
+    <h2 class="mb-4">{{ title }}</h2>
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form|crispy }}
+        <button type="submit" class="btn btn-primary">{{ button_text }}</button>
+        <a href="{% url 'food:index' %}" class="btn btn-secondary ms-2">Cancel</a>
+    </form>
+</div>
+{% endblock %}

@@ -1,7 +1,0 @@
-<ul>
-    {% for item in items %}
-        <li>
-           <a href="{% url 'food:detail' item.id %}">{{ item.item_name }}</a>
-        </li>
-    {% endfor %}
-</ul>
