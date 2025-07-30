@@ -4,10 +4,9 @@ from . import views
 app_name='food'
 
 urlpatterns = [
-    path('', views.index,name='index'),
-    path('items/', views.item,name='item'),
-    path('<int:item_id>/', views.detail,name='detail'),
-    path('add/',views.create_item,name='create-item'),
-    path('update/<int:id>/',views.update_item,name='update-item'),
-    path('delete/<int:id>/',views.delete_item,name='delete-item')
+    path('', views.IndexClassView.as_view(),name='index'),
+    path('<int:item_id>/', views.ItemDetailView.as_view(),name='detail'),
+    path('add/',views.ItemCreateView.as_view(),name='create-item'),
+    path('update/<int:id>/',views.ItemUpdateView.as_view(),name='update-item'),
+    path('delete/<int:id>/',views.ItemDeleteView.as_view(),name='delete-item')
 ]
