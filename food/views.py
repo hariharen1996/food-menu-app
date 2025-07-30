@@ -17,13 +17,17 @@ class ItemDetailView(LoginRequiredMixin,DetailView):
     model = Item 
     template_name = 'food/detail.html'
     context_object_name = 'item'
-    pk_url_kwarg = 'item_id'
+    pk_url_kwarg = 'pk'
 
 class ItemCreateView(LoginRequiredMixin,CreateView):
     model = Item
     form_class = ItemForm
     template_name = 'food/item_form.html'
     success_url = reverse_lazy('food:index')
+
+    def form_valid(self, form):
+        form.instance.user_name = self.request.user
+        return super().form_valid(form)
 
     def get_context_data(self, **kwargs):
         context =  super().get_context_data(**kwargs)

@@ -13,7 +13,7 @@
                     <p class="card-text text-muted">{{ item.item_desc|truncatechars:100 }}</p>
                     <p class="card-text fw-semibold text-dark">Price: ₹{{ item.item_price }}</p>
                     <div class="mt-auto">
-                        <a href="{% url 'food:detail' item.id %}" class="btn btn-sm btn-outline-primary me-2">View Details</a>
+                        <a href="{{ item.get_absolute_url }}" class="btn btn-sm btn-outline-primary me-2">View Details</a>
                         <a href="{% url 'food:update-item' item.id %}" class="btn btn-sm btn-outline-success me-2">Update</a>
                         <a href="{% url 'food:delete-item' item.id %}" class="btn btn-sm btn-outline-danger">Delete</a>
                     </div>
